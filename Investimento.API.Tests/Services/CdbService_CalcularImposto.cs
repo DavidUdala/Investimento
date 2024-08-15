@@ -19,14 +19,14 @@ namespace Investimento.API.Tests.Services
         public void RetornaValorImpostoQuandoImpostoCalculadoRealizado(double valorMonetario, int prazoEmMeses, double valorBrutoTotal, double impostoEsperado)
         {
             //Arrange
-            var methodInfo = typeof(CdbService).GetMethod("CalcularImposto", BindingFlags.NonPublic | BindingFlags.Instance);
+            var MetodoCalcularImposto = typeof(CdbService).GetMethod("CalcularImposto", BindingFlags.NonPublic | BindingFlags.Instance);
 
-            if (methodInfo == null)
+            if (MetodoCalcularImposto == null)
                 Assert.Fail("Método privado não encontrado.");
 
             var investimentoRequest = new InvestimentoRequest(valorMonetario, prazoEmMeses);
             //Act
-            double result = (double)methodInfo.Invoke(_cdbService, new object[] { investimentoRequest, valorBrutoTotal });
+            double result = (double)MetodoCalcularImposto.Invoke(_cdbService, new object[] { investimentoRequest, valorBrutoTotal });
 
             //Assert
             Assert.IsNotNull(result);
