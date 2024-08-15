@@ -11,7 +11,7 @@ namespace Investimento.API.Tests.Services
         private readonly ICdbService _cdbService = new CdbService();
 
         [TestMethod]
-        [DataRow(100.00, 6, 105.98, 104.78)]
+        [DataRow(100.00, 6, 105.98, 104.63)]
         [DataRow(100.00, 7, 107.01, 105.6)]
         [DataRow(100.00, 13, 113.4, 111.05)]
         [DataRow(100.00, 25, 127.36, 123.25)]

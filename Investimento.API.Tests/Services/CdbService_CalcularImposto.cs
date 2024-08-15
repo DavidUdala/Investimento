@@ -12,7 +12,7 @@ namespace Investimento.API.Tests.Services
         private readonly ICdbService _cdbService = new CdbService();
 
         [TestMethod]
-        [DataRow(100.00, 6, 105.98, 1.2)]
+        [DataRow(100.00, 6, 105.98, 1.35)]
         [DataRow(100.00, 7, 107.01, 1.4)]
         [DataRow(100.00, 13, 113.4, 2.35)]
         [DataRow(100.00, 25, 127.36, 4.10)]
@@ -20,9 +20,6 @@ namespace Investimento.API.Tests.Services
         {
             //Arrange
             var MetodoCalcularImposto = typeof(CdbService).GetMethod("CalcularImposto", BindingFlags.NonPublic | BindingFlags.Instance);
-
-            if (MetodoCalcularImposto == null)
-                Assert.Fail("Método privado não encontrado.");
 
             var investimentoRequest = new InvestimentoRequest(valorMonetario, prazoEmMeses);
             //Act

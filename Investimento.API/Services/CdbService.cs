@@ -53,7 +53,7 @@ namespace Investimento.API.Services
         {
             foreach (var taxa in taxasImposto)
             {
-                if (prazoEmMeses < taxa.Key)
+                if (prazoEmMeses <= taxa.Key)
                 {
                     return taxa.Value / 100;
                 }
