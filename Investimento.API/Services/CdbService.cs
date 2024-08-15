@@ -30,7 +30,7 @@ namespace Investimento.API.Services
             return resultado;
         }
 
-        private double CalcularValorTotalBruto(InvestimentoRequest investimentoRequest)
+        public double CalcularValorTotalBruto(InvestimentoRequest investimentoRequest)
         {
             double valor = investimentoRequest.ValorMonetario;
 
@@ -42,14 +42,14 @@ namespace Investimento.API.Services
             return valor;
         }
 
-        private double CalcularValorTotalLiquido(InvestimentoRequest investimentoRequest, double valorBruto)
+        public double CalcularValorTotalLiquido(InvestimentoRequest investimentoRequest, double valorBruto)
         {
             double imposto = CalcularImposto(investimentoRequest, valorBruto);
 
             return valorBruto - imposto;
         }
 
-        private double RetornaTaxaImposto(int prazoEmMeses)
+        public double RetornaTaxaImposto(int prazoEmMeses)
         {
             foreach (var taxa in taxasImposto)
             {
@@ -62,7 +62,7 @@ namespace Investimento.API.Services
             return taxasImposto.LastOrDefault().Value;
         }
 
-        private double CalcularImposto(InvestimentoRequest investimentoRequest, double valorBruto)
+        public double CalcularImposto(InvestimentoRequest investimentoRequest, double valorBruto)
         {
             double taxa = RetornaTaxaImposto(investimentoRequest.PrazoEmMeses);
 

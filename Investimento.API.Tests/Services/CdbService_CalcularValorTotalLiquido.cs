@@ -20,11 +20,10 @@ namespace Investimento.API.Tests.Services
         public void RetornaValorTotalLiquidoQuandoCalculoRealizado(double valorMonetario, int prazoEmMeses, double valorBrutoTotal, double valorLiquidoEsperado)
         {
             //Arrange
-            var MetodoCalcularImposto = typeof(CdbService).GetMethod("CalcularValorTotalLiquido", BindingFlags.NonPublic | BindingFlags.Instance);
-
             var investimentoRequest = new InvestimentoRequest(valorMonetario, prazoEmMeses);
+
             //Act
-            double result = (double)MetodoCalcularImposto.Invoke(_cdbService, new object[] { investimentoRequest, valorBrutoTotal });
+            var result = _cdbService.CalcularValorTotalLiquido(investimentoRequest, valorBrutoTotal);
 
             //Assert
             Assert.IsNotNull(result);

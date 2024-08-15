@@ -23,11 +23,9 @@ namespace Investimento.API.Tests.Services
         [DataRow(25, 0.15)]
         public void RetornaTaxaImpostoQuandoPrazoMesesInformado(int prazoEmMeses, double taxaImpostoEsperada)
         {
-            //Arrange
-            var MetodoCalcularImposto = typeof(CdbService).GetMethod("RetornaTaxaImposto", BindingFlags.NonPublic | BindingFlags.Instance);
 
             //Act
-            double result = (double)MetodoCalcularImposto.Invoke(_cdbService, new object[] { prazoEmMeses });
+            var result = _cdbService.RetornaTaxaImposto(prazoEmMeses);
 
             //Assert
             Assert.IsNotNull(result);
