@@ -1,6 +1,5 @@
 ﻿using Investimento.API.Interfaces;
 using Investimento.API.Models;
-using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace Investimento.API.Controllers
@@ -15,12 +14,12 @@ namespace Investimento.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IHttpActionResult> SimulacaoResgateAplicacao(InvestimentoRequest requestCalculoCdb)
+        public IHttpActionResult SimulacaoResgateAplicacao(InvestimentoRequest requestCalculoCdb)
         {
             if (!requestCalculoCdb.Validar())
-                return BadRequest("Informe um valor monetário e um mes que seja valido.");
+                return BadRequest("Informe um valor monetário e um mês que seja válido.");
 
-            var result = await _cdbService.CalcularAsync(requestCalculoCdb);
+            var result = _cdbService.Calcular(requestCalculoCdb);
 
             return Ok(result);
         }

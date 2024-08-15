@@ -152,6 +152,7 @@
     <Compile Include="Interfaces\ICdbService.cs" />
     <Compile Include="Interfaces\IInvestimentoService.cs" />
     <Compile Include="Models\InvestimentoRequest.cs" />
+    <Compile Include="Models\InvestimentoResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CdbService.cs" />
   </ItemGroup>

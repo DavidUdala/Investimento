@@ -4,8 +4,15 @@ namespace Investimento.API.Models
 {
     public class InvestimentoRequest
     {
-        public double ValorMonetario { get; set; }
-        public int PrazoEmMeses { get; set; }
+
+        public InvestimentoRequest(double valorMonetario, int prazoEmMeses)
+        {
+            ValorMonetario = valorMonetario;
+            PrazoEmMeses = prazoEmMeses;
+        }
+
+        public double ValorMonetario { get; private set; }
+        public int PrazoEmMeses { get; private set; }
 
         private bool ValidaValorMonetario ()
         {
@@ -16,7 +23,7 @@ namespace Investimento.API.Models
 
         private bool ValidaPrazoEmMeses()
         {
-            if(this.PrazoEmMeses < 1 || this.PrazoEmMeses > 12)
+            if(this.PrazoEmMeses < 1)
                 return false ;
             return true;
         }
